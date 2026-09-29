@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mdti-mcp"
+version = "0.1.0"
+description = "Read Microsoft external host intelligence: resolutions and certificates"
+requires-python = ">=3.11,<3.15"
+dependencies = [
+  "mcp==1.30.0",
+  "msal==1.34.0",
+  "httpx==0.28.1",
+  "keyring==25.7.0",
+  "pydantic>=2.11,<3",
+  "idna>=3.10,<4",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8,<10"]
+
+[project.scripts]
+mdti-mcp = "mdti_mcp.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
